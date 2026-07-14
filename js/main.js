@@ -26,13 +26,23 @@
   /* --- 2. Header au scroll + bouton retour en haut --- */
   const header = document.querySelector('.site-header');
   const toTop = document.getElementById('toTop');
-  function onScroll() {
+  let scrollTicking = false;
+  // La lecture de window.scrollY est faite une seule fois par frame, dans un
+  // requestAnimationFrame, pour éviter tout « forced reflow » à chaque événement scroll.
+  function applyScrollState() {
+    scrollTicking = false;
     const y = window.scrollY;
     if (header) header.classList.toggle('scrolled', y > 8);
     if (toTop) toTop.classList.toggle('show', y > 600);
   }
+  function onScroll() {
+    if (!scrollTicking) {
+      scrollTicking = true;
+      window.requestAnimationFrame(applyScrollState);
+    }
+  }
   window.addEventListener('scroll', onScroll, { passive: true });
-  onScroll();
+  window.requestAnimationFrame(applyScrollState);
   if (toTop) toTop.addEventListener('click', function () {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   });
