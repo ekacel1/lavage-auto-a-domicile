@@ -1,0 +1,1307 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Manifeste Design · Landing Page SEO Lavage Auto</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet">
+<style>
+/* ============================================================
+   TOKENS — À COPIER-COLLER TEL QUEL DANS LE PROJET
+   ============================================================ */
+:root{
+  /* — Accent (Indigo) — */
+  --accent:            #393BF7;
+  --accent-hover:      #2A2CD6;
+  --accent-active:     #2225B0;
+  --accent-tint:       #EBEBFE;
+  --accent-tint-strong:#DEDEFD;
+  --accent-border:     #C9C9FB;
+
+  /* — Neutres (thème clair) — */
+  --bg:            #F6F7FB;
+  --surface:       #FFFFFF;
+  --surface-2:     #FBFBFE;
+  --surface-tint:  #EEF0F7;
+  --border:        #E7E9F2;
+  --border-strong: #D6D9E6;
+
+  /* — Encre / texte — */
+  --ink:         #14152B;
+  --ink-2:       #4C4F6B;
+  --ink-3:       #7C7F98;
+  --ink-inverse: #FFFFFF;
+
+  /* — Surfaces sombres (footer, cards emphase) — */
+  --ink-surface:   #14152B;
+  --ink-surface-2: #20223F;
+
+  /* — Sémantique — */
+  --success: #12B76A;
+  --warning: #F79009;
+  --error:   #F04438;
+
+  /* — Rayons — */
+  --r-xs:  8px;
+  --r-sm:  12px;
+  --r-md:  16px;
+  --r-lg:  24px;
+  --r-xl:  32px;
+  --r-2xl: 40px;
+  --r-pill:999px;
+
+  /* — Ombres — */
+  --sh-xs: 0 1px 2px rgba(20,21,43,.04);
+  --sh-sm: 0 2px 8px rgba(20,21,43,.05);
+  --sh-md: 0 8px 24px rgba(20,21,43,.06);
+  --sh-lg: 0 16px 40px rgba(20,21,43,.08);
+  --sh-xl: 0 24px 64px rgba(20,21,43,.10);
+  --sh-accent: 0 8px 24px rgba(57,59,247,.28);
+
+  /* — Typo — */
+  --font: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+
+  /* — Transition — */
+  --ease: cubic-bezier(.4,0,.2,1);
+  --dur:  200ms;
+
+  /* — Conteneur / grille — */
+  --container: 1200px;
+  --gutter:    24px;
+}
+
+/* ============================================================
+   STYLES DU DOCUMENT (manifeste)
+   ============================================================ */
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;scroll-padding-top:32px}
+body{
+  font-family:var(--font);
+  background:var(--bg);
+  color:var(--ink);
+  line-height:1.6;
+  -webkit-font-smoothing:antialiased;
+  text-rendering:optimizeLegibility;
+}
+code,pre{font-family:'SF Mono',ui-monospace,'JetBrains Mono','Cascadia Code',Menlo,monospace}
+
+/* Layout */
+.wrap{display:grid;grid-template-columns:260px 1fr;max-width:1440px;margin:0 auto}
+.toc{
+  position:sticky;top:0;align-self:start;height:100vh;overflow-y:auto;
+  padding:40px 24px;border-right:1px solid var(--border);background:var(--surface);
+}
+.toc-brand{display:flex;align-items:center;gap:10px;margin-bottom:28px}
+.toc-logo{width:32px;height:32px;border-radius:9px;background:var(--accent);display:grid;place-items:center;flex-shrink:0}
+.toc-logo svg{width:18px;height:18px}
+.toc-brand b{font-size:14px;font-weight:800;letter-spacing:-.02em;line-height:1.2}
+.toc-brand span{font-size:11px;color:var(--ink-3);font-weight:500}
+.toc a{
+  display:block;padding:7px 12px;border-radius:8px;text-decoration:none;
+  color:var(--ink-2);font-size:13.5px;font-weight:500;transition:var(--dur) var(--ease);
+}
+.toc a:hover{background:var(--surface-tint);color:var(--ink)}
+.toc a .n{color:var(--ink-3);font-variant-numeric:tabular-nums;margin-right:8px;font-weight:600}
+.main{padding:0 clamp(24px,5vw,72px) 120px;min-width:0}
+
+/* Cover */
+.cover{padding:88px 0 56px;border-bottom:1px solid var(--border);margin-bottom:64px}
+.tag{
+  display:inline-flex;align-items:center;gap:8px;background:var(--accent-tint);color:var(--accent);
+  font-size:12.5px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;
+  padding:7px 14px;border-radius:var(--r-pill);margin-bottom:24px;
+}
+.tag .dot{width:6px;height:6px;border-radius:50%;background:var(--accent)}
+.cover h1{font-size:clamp(38px,6vw,60px);font-weight:800;line-height:1.02;letter-spacing:-.03em;margin-bottom:20px}
+.cover h1 em{color:var(--accent);font-style:normal}
+.cover .lead{font-size:clamp(17px,2.4vw,20px);color:var(--ink-2);max-width:680px;font-weight:400}
+.cover-meta{display:flex;flex-wrap:wrap;gap:12px;margin-top:32px}
+.chip{
+  display:inline-flex;align-items:center;gap:8px;background:var(--surface);border:1px solid var(--border);
+  padding:8px 16px;border-radius:var(--r-pill);font-size:13px;font-weight:600;color:var(--ink-2);
+}
+.chip svg{width:15px;height:15px;color:var(--accent)}
+
+/* Section shell */
+section{margin-bottom:80px;scroll-margin-top:24px}
+.sec-head{margin-bottom:32px}
+.sec-num{font-size:13px;font-weight:700;color:var(--accent);letter-spacing:.08em;font-variant-numeric:tabular-nums}
+.sec-head h2{font-size:clamp(26px,3.4vw,36px);font-weight:800;letter-spacing:-.025em;line-height:1.1;margin-top:6px}
+.sec-head p{font-size:16px;color:var(--ink-2);max-width:720px;margin-top:12px}
+
+/* Content cards */
+.panel{background:var(--surface);border:1px solid var(--border);border-radius:var(--r-lg);padding:32px}
+.panel + .panel{margin-top:20px}
+.grid{display:grid;gap:20px}
+.g2{grid-template-columns:repeat(2,1fr)}
+.g3{grid-template-columns:repeat(3,1fr)}
+.g4{grid-template-columns:repeat(4,1fr)}
+@media(max-width:900px){.g2,.g3,.g4{grid-template-columns:1fr}}
+
+.label{font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--ink-3);margin-bottom:14px}
+
+/* Colours */
+.swatches{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:14px}
+.sw{border:1px solid var(--border);border-radius:var(--r-md);overflow:hidden;background:var(--surface)}
+.sw .box{height:76px;border-bottom:1px solid var(--border)}
+.sw .meta{padding:11px 13px}
+.sw .meta b{display:block;font-size:13px;font-weight:700}
+.sw .meta code{display:block;font-size:11.5px;color:var(--ink-3);margin-top:3px}
+.sw .meta small{display:block;font-size:11px;color:var(--ink-3);margin-top:5px}
+
+/* Type specimens */
+.spec{padding:22px 0;border-bottom:1px solid var(--border)}
+.spec:last-child{border-bottom:0}
+.spec .demo{color:var(--ink)}
+.spec .info{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
+.pill-i{font-size:11.5px;font-weight:600;color:var(--ink-2);background:var(--surface-tint);padding:4px 10px;border-radius:var(--r-pill);font-variant-numeric:tabular-nums}
+.pill-i b{color:var(--ink);font-weight:700}
+
+/* Code */
+pre{
+  background:var(--ink-surface);color:#E4E6F5;border-radius:var(--r-md);padding:22px 24px;
+  overflow-x:auto;font-size:13px;line-height:1.7;margin-top:4px;
+}
+pre .c{color:#7C7F98}
+pre .p{color:#A6A8FF}
+pre .v{color:#9EE6C4}
+.inline{background:var(--surface-tint);border:1px solid var(--border);padding:1px 7px;border-radius:6px;font-size:.9em;color:var(--accent);font-weight:600}
+
+/* Spacing scale */
+.space-row{display:flex;align-items:center;gap:16px;padding:9px 0}
+.space-row .bar{height:16px;background:var(--accent);border-radius:4px}
+.space-row .t{font-size:13px;color:var(--ink-2);font-variant-numeric:tabular-nums;min-width:120px}
+.space-row .t b{color:var(--ink)}
+
+/* Radius demo */
+.radius-demo{display:grid;grid-template-columns:repeat(auto-fill,minmax(120px,1fr));gap:16px}
+.rd{text-align:center}
+.rd .b{height:88px;background:var(--accent-tint);border:1.5px solid var(--accent-border)}
+.rd small{display:block;margin-top:9px;font-size:12px;color:var(--ink-2);font-weight:600}
+.rd small code{color:var(--ink-3);font-weight:400}
+
+/* Shadow demo */
+.shadow-demo{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:22px;padding:8px 4px}
+.shd{background:var(--surface);border-radius:var(--r-md);height:96px;display:grid;place-items:end center;padding-bottom:12px}
+.shd small{font-size:12px;font-weight:700;color:var(--ink-2)}
+.shd small code{display:block;color:var(--ink-3);font-weight:400;font-size:10.5px;margin-top:2px}
+
+/* Buttons live */
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;gap:9px;cursor:pointer;
+  font-family:var(--font);font-weight:600;font-size:15px;line-height:1;border:1px solid transparent;
+  border-radius:var(--r-pill);padding:14px 28px;transition:var(--dur) var(--ease);text-decoration:none;white-space:nowrap;
+}
+.btn svg{width:17px;height:17px}
+.btn-primary{background:var(--accent);color:#fff}
+.btn-primary:hover{background:var(--accent-hover);box-shadow:var(--sh-accent);transform:translateY(-1px)}
+.btn-primary:active{background:var(--accent-active);transform:translateY(0);box-shadow:none}
+.btn-secondary{background:var(--surface);color:var(--ink);border-color:var(--border-strong)}
+.btn-secondary:hover{border-color:var(--accent);color:var(--accent);background:var(--accent-tint)}
+.btn-ghost{background:transparent;color:var(--accent);padding-left:8px;padding-right:8px}
+.btn-ghost:hover{background:var(--accent-tint)}
+.btn-dark{background:var(--ink-surface);color:#fff}
+.btn-dark:hover{background:var(--ink-surface-2);transform:translateY(-1px)}
+.btn-sm{padding:10px 18px;font-size:14px}
+.btn-lg{padding:18px 34px;font-size:16px}
+.btn-block{display:flex;width:100%}
+.btn-tray{display:flex;flex-wrap:wrap;gap:14px;align-items:center}
+
+/* Feature / service card examples */
+.card{background:var(--surface);border:1px solid var(--border);border-radius:var(--r-lg);padding:28px;transition:var(--dur) var(--ease)}
+.card:hover{transform:translateY(-4px);box-shadow:var(--sh-lg);border-color:transparent}
+.card .ic{width:52px;height:52px;border-radius:14px;background:var(--accent-tint);display:grid;place-items:center;margin-bottom:18px}
+.card .ic svg{width:24px;height:24px;color:var(--accent)}
+.card h4{font-size:19px;font-weight:700;letter-spacing:-.01em;margin-bottom:9px}
+.card p{font-size:14.5px;color:var(--ink-2)}
+.card-dark{background:var(--ink-surface);border-color:transparent;color:#fff;position:relative;overflow:hidden}
+.card-dark .ic{background:rgba(255,255,255,.1)}
+.card-dark .ic svg{color:#fff}
+.card-dark p{color:rgba(255,255,255,.65)}
+.card-dark::after{content:"";position:absolute;right:-40px;bottom:-40px;width:160px;height:160px;border-radius:50%;background:radial-gradient(circle,rgba(57,59,247,.35),transparent 70%)}
+.card-tint{background:var(--accent-tint);border-color:var(--accent-border)}
+
+/* Stat card (band) */
+.statband{background:var(--ink-surface);border-radius:var(--r-xl);padding:40px;display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+@media(max-width:900px){.statband{grid-template-columns:repeat(2,1fr);padding:28px}}
+.stat .num{font-size:44px;font-weight:800;letter-spacing:-.03em;line-height:1;color:#fff}
+.stat .num em{color:var(--accent-border);font-style:normal}
+.stat .lbl{font-size:13.5px;color:rgba(255,255,255,.6);margin-top:8px;font-weight:500}
+
+/* Form example */
+.form-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--r-xl);padding:34px;box-shadow:var(--sh-lg);max-width:460px}
+.field{margin-bottom:18px}
+.field label{display:block;font-size:14px;font-weight:600;color:var(--ink);margin-bottom:8px}
+.field input,.field select,.field textarea{
+  width:100%;font-family:var(--font);font-size:15px;color:var(--ink);background:var(--surface);
+  border:1px solid var(--border);border-radius:var(--r-sm);padding:13px 15px;transition:var(--dur) var(--ease);
+}
+.field input::placeholder,.field textarea::placeholder{color:var(--ink-3)}
+.field input:focus,.field select:focus,.field textarea:focus{
+  outline:none;border-color:var(--accent);box-shadow:0 0 0 4px rgba(57,59,247,.12);
+}
+.field textarea{resize:vertical;min-height:96px}
+.hp{position:absolute;left:-9999px;opacity:0;height:0;width:0}
+
+/* Badges */
+.badge{display:inline-flex;align-items:center;gap:6px;font-size:13px;font-weight:600;padding:6px 13px;border-radius:var(--r-pill)}
+.badge-accent{background:var(--accent-tint);color:var(--accent)}
+.badge-neutral{background:var(--surface-tint);color:var(--ink-2)}
+.badge-success{background:#E6F7EF;color:#0A8A50}
+.badge .d{width:7px;height:7px;border-radius:50%;background:currentColor}
+.badge-tray{display:flex;flex-wrap:wrap;gap:10px}
+
+/* Blueprint / wireframe */
+.bp{background:var(--surface-2);border:1px dashed var(--border-strong);border-radius:var(--r-md);padding:18px 20px;margin-bottom:12px;position:relative}
+.bp .bp-tag{position:absolute;top:14px;right:16px;font-size:11px;font-weight:700;color:var(--ink-3);text-transform:uppercase;letter-spacing:.05em}
+.bp h5{font-size:15px;font-weight:700;color:var(--ink);margin-bottom:5px}
+.bp p{font-size:13.5px;color:var(--ink-2)}
+.bp code{color:var(--accent);font-size:12.5px}
+/* Wireframes de disposition (section 17) */
+.wire{background:var(--surface-2);border:1px solid var(--border);border-radius:var(--r-md);padding:20px}
+.wbox{background:var(--surface);border:1px solid var(--border-strong);border-radius:10px;padding:13px;display:flex;flex-direction:column;justify-content:center;min-height:62px;position:relative;overflow:hidden}
+.wbox.dark{background:var(--ink-surface);border-color:transparent}
+.wbox.dark .wl{color:#fff}
+.wbox.dark .ws{color:rgba(255,255,255,.55)}
+.wbox.tint{background:var(--accent-tint);border-color:var(--accent-border)}
+.wbox.img{background:repeating-linear-gradient(135deg,#d4d7e1,#d4d7e1 10px,#dfe2ec 10px,#dfe2ec 20px);border-color:transparent}
+.wbox.img .wl{color:var(--ink-2)}
+.wl{font-size:12.5px;font-weight:700;color:var(--ink);line-height:1.3}
+.ws{font-size:10.5px;color:var(--ink-3);margin-top:3px;line-height:1.35}
+.pattern-head{display:flex;align-items:center;gap:12px;margin-bottom:10px}
+.pattern-head .pn{font-size:14px;font-weight:800;color:#fff;background:var(--accent);width:30px;height:30px;border-radius:9px;display:grid;place-items:center;flex-shrink:0}
+.pattern-head h4{font-size:21px;font-weight:800;letter-spacing:-.02em}
+.spec-box{margin-top:16px;background:var(--surface-tint);border-radius:var(--r-md);padding:16px 18px;font-size:13px;color:var(--ink-2)}
+.spec-box b.st{color:var(--ink);display:block;margin-bottom:9px;font-size:11px;text-transform:uppercase;letter-spacing:.06em}
+.spec-box .sr{display:flex;flex-direction:column;gap:7px}
+.spec-box .sr>div{line-height:1.5}
+.spec-box code{color:var(--accent);font-size:12.5px}
+.assemble{display:flex;gap:14px;align-items:flex-start;padding:14px 0;border-bottom:1px solid var(--border)}
+.assemble:last-child{border-bottom:0}
+.assemble .idx{font-size:12px;font-weight:800;color:var(--ink-3);font-variant-numeric:tabular-nums;min-width:20px;padding-top:3px}
+.assemble .ac{flex:1;min-width:0}
+.assemble .an{font-size:14.5px;font-weight:700;color:var(--ink)}
+.assemble .ad{font-size:13px;color:var(--ink-2);margin-top:2px}
+.ptag{display:inline-flex;align-items:center;font-size:11px;font-weight:700;color:var(--accent);background:var(--accent-tint);padding:5px 11px;border-radius:var(--r-pill);white-space:nowrap;flex-shrink:0;margin-top:3px}
+.ptag.comp{color:var(--ink-2);background:var(--surface-tint)}
+
+/* Do / Dont */
+.dd{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+@media(max-width:900px){.dd{grid-template-columns:1fr}}
+.dd-col{border-radius:var(--r-lg);padding:24px;border:1px solid var(--border)}
+.dd-do{background:#F0FBF6;border-color:#C6EDDA}
+.dd-dont{background:#FEF3F2;border-color:#FCD9D5}
+.dd-col h4{display:flex;align-items:center;gap:9px;font-size:15px;font-weight:800;margin-bottom:14px}
+.dd-do h4{color:#0A8A50}.dd-dont h4{color:#C0362B}
+.dd-col ul{list-style:none;display:flex;flex-direction:column;gap:11px}
+.dd-col li{font-size:14px;color:var(--ink-2);padding-left:26px;position:relative;line-height:1.5}
+.dd-col li::before{position:absolute;left:0;top:0;font-weight:700}
+.dd-do li::before{content:"✓";color:#0A8A50}
+.dd-dont li::before{content:"✕";color:#C0362B}
+
+.note{background:var(--accent-tint);border:1px solid var(--accent-border);border-radius:var(--r-md);padding:16px 20px;font-size:14px;color:var(--ink-2);display:flex;gap:12px;margin-top:16px}
+.note svg{width:20px;height:20px;color:var(--accent);flex-shrink:0;margin-top:1px}
+.note b{color:var(--ink)}
+
+.tbl{width:100%;border-collapse:collapse;font-size:14px}
+.tbl th{text-align:left;font-size:12px;text-transform:uppercase;letter-spacing:.05em;color:var(--ink-3);padding:0 14px 12px;border-bottom:1px solid var(--border);font-weight:700}
+.tbl td{padding:13px 14px;border-bottom:1px solid var(--border);color:var(--ink-2);vertical-align:top}
+.tbl td b{color:var(--ink);font-weight:700}
+.tbl code{color:var(--accent);font-size:13px}
+.tbl tr:last-child td{border-bottom:0}
+
+.divider{height:1px;background:var(--border);margin:32px 0}
+
+@media(max-width:1000px){
+  .wrap{grid-template-columns:1fr}
+  .toc{position:static;height:auto;border-right:0;border-bottom:1px solid var(--border);padding:24px}
+  .toc-links{display:grid;grid-template-columns:repeat(2,1fr);gap:2px}
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <!-- ============ TOC ============ -->
+  <nav class="toc">
+    <div class="toc-brand">
+      <div class="toc-logo">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 17h14M6 17l1.5-4.5A2 2 0 0 1 9.4 11h5.2a2 2 0 0 1 1.9 1.5L18 17M8 17v2M16 17v2M7 11l1-3a2 2 0 0 1 2-1.4h4A2 2 0 0 1 16 8l1 3"/></svg>
+      </div>
+      <div>
+        <b>Manifeste Design</b><br>
+        <span>Landing SEO · Lavage Auto</span>
+      </div>
+    </div>
+    <div class="toc-links">
+      <a href="#philo"><span class="n">00</span>Philosophie</a>
+      <a href="#tokens"><span class="n">01</span>Fondations CSS</a>
+      <a href="#color"><span class="n">02</span>Couleurs</a>
+      <a href="#type"><span class="n">03</span>Typographie</a>
+      <a href="#space"><span class="n">04</span>Espacements</a>
+      <a href="#radius"><span class="n">05</span>Rayons</a>
+      <a href="#shadow"><span class="n">06</span>Ombres</a>
+      <a href="#border"><span class="n">07</span>Bordures</a>
+      <a href="#btn"><span class="n">08</span>Boutons</a>
+      <a href="#cards"><span class="n">09</span>Cards</a>
+      <a href="#forms"><span class="n">10</span>Formulaires</a>
+      <a href="#badges"><span class="n">11</span>Badges</a>
+      <a href="#media"><span class="n">12</span>Images</a>
+      <a href="#icons"><span class="n">13</span>Icônes</a>
+      <a href="#layout"><span class="n">14</span>Grille</a>
+      <a href="#motion"><span class="n">15</span>Motion</a>
+      <a href="#signature"><span class="n">16</span>Signature</a>
+      <a href="#blueprint"><span class="n">17</span>Blueprints</a>
+      <a href="#seo"><span class="n">18</span>SEO & A11y</a>
+      <a href="#rules"><span class="n">19</span>Do / Don't</a>
+    </div>
+  </nav>
+
+  <!-- ============ MAIN ============ -->
+  <main class="main">
+
+    <!-- COVER -->
+    <header class="cover">
+      <span class="tag"><span class="dot"></span>Charte graphique · v1.0</span>
+      <h1>Direction artistique pour une landing page<br><em>lavage auto</em> qui convertit.</h1>
+      <p class="lead">Ce document définit l'intégralité des règles visuelles à appliquer — couleurs, typographie, espacements, composants. Le développeur n'a aucune décision esthétique à prendre : tout est spécifié, il implémente. Esthétique premium, épurée, rassurante, inspirée d'un système clair et arrondi avec un accent indigo unique.</p>
+      <div class="cover-meta">
+        <span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>Thème clair</span>
+        <span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="4"/></svg>Accent #393BF7</span>
+        <span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h10M4 17h7"/></svg>Plus Jakarta Sans</span>
+        <span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 1 0 18 0 9 9 0 0 0-18 0M3 12h18"/></svg>SEO-ready</span>
+      </div>
+    </header>
+
+    <!-- 00 PHILOSOPHIE -->
+    <section id="philo">
+      <div class="sec-head">
+        <div class="sec-num">00 — PHILOSOPHIE</div>
+        <h2>L'intention derrière chaque pixel</h2>
+        <p>Trois principes guident tout le reste. Si un choix ne sert pas l'un d'eux, il ne rentre pas dans la page.</p>
+      </div>
+      <div class="grid g3">
+        <div class="panel">
+          <div class="card-icon" style="width:44px;height:44px;border-radius:12px;background:var(--accent-tint);display:grid;place-items:center;margin-bottom:16px">
+            <svg viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:22px;height:22px"><path d="M12 3l7 4v5c0 4-3 7-7 9-4-2-7-5-7-9V7z"/><path d="M9 12l2 2 4-4"/></svg>
+          </div>
+          <h4 style="font-size:18px;font-weight:700;margin-bottom:8px">Confiance avant tout</h4>
+          <p style="font-size:14.5px;color:var(--ink-2)">Beaucoup d'espace blanc, des coins doux, des ombres légères. Rien d'agressif. Le visiteur doit sentir un service propre, sérieux, haut de gamme — comme le résultat qu'il achète.</p>
+        </div>
+        <div class="panel">
+          <div style="width:44px;height:44px;border-radius:12px;background:var(--accent-tint);display:grid;place-items:center;margin-bottom:16px">
+            <svg viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:22px;height:22px"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </div>
+          <h4 style="font-size:18px;font-weight:700;margin-bottom:8px">Un seul accent</h4>
+          <p style="font-size:14.5px;color:var(--ink-2)">L'indigo <span class="inline">#393BF7</span> est la seule couleur vive. On l'utilise avec parcimonie : boutons, mots-clés de titres, icônes, focus. Partout ailleurs : neutres. La rareté crée la valeur.</p>
+        </div>
+        <div class="panel">
+          <div style="width:44px;height:44px;border-radius:12px;background:var(--accent-tint);display:grid;place-items:center;margin-bottom:16px">
+            <svg viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:22px;height:22px"><path d="M4 6h16M4 12h16M4 18h10"/></svg>
+          </div>
+          <h4 style="font-size:18px;font-weight:700;margin-bottom:8px">Hiérarchie lisible</h4>
+          <p style="font-size:14.5px;color:var(--ink-2)">Chaque section a un rythme clair : sur-titre → titre bicolore → texte → action. Le regard sait toujours où aller ensuite. C'est ce qui transforme un visiteur en lead.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 01 TOKENS -->
+    <section id="tokens">
+      <div class="sec-head">
+        <div class="sec-num">01 — FONDATIONS</div>
+        <h2>Le bloc CSS à copier-coller</h2>
+        <p>Point de départ obligatoire. Tous les composants ci-dessous référencent ces variables. Ne redéfinis jamais une couleur ou une valeur « en dur » ailleurs.</p>
+      </div>
+<pre><span class="c">/* Coller dans :root en tout début de feuille de style */</span>
+<span class="p">:root</span>{
+  <span class="c">/* Accent (Indigo) */</span>
+  <span class="p">--accent</span>:            <span class="v">#393BF7</span>;   <span class="c">/* boutons, liens, focus, mots-clés */</span>
+  <span class="p">--accent-hover</span>:      <span class="v">#2A2CD6</span>;   <span class="c">/* survol boutons */</span>
+  <span class="p">--accent-active</span>:     <span class="v">#2225B0</span>;   <span class="c">/* clic / pressed */</span>
+  <span class="p">--accent-tint</span>:       <span class="v">#EBEBFE</span>;   <span class="c">/* fonds doux, badges, cercles d'icônes */</span>
+  <span class="p">--accent-tint-strong</span>:<span class="v">#DEDEFD</span>;
+  <span class="p">--accent-border</span>:     <span class="v">#C9C9FB</span>;
+
+  <span class="c">/* Neutres — thème clair */</span>
+  <span class="p">--bg</span>:            <span class="v">#F6F7FB</span>;   <span class="c">/* fond de page */</span>
+  <span class="p">--surface</span>:       <span class="v">#FFFFFF</span>;   <span class="c">/* cards, header, formulaires */</span>
+  <span class="p">--surface-2</span>:     <span class="v">#FBFBFE</span>;
+  <span class="p">--surface-tint</span>:  <span class="v">#EEF0F7</span>;   <span class="c">/* bandeaux de section alternés */</span>
+  <span class="p">--border</span>:        <span class="v">#E7E9F2</span>;
+  <span class="p">--border-strong</span>: <span class="v">#D6D9E6</span>;
+
+  <span class="c">/* Encre / texte */</span>
+  <span class="p">--ink</span>:         <span class="v">#14152B</span>;   <span class="c">/* titres, texte principal */</span>
+  <span class="p">--ink-2</span>:       <span class="v">#4C4F6B</span>;   <span class="c">/* paragraphes */</span>
+  <span class="p">--ink-3</span>:       <span class="v">#7C7F98</span>;   <span class="c">/* légendes, placeholders */</span>
+  <span class="p">--ink-inverse</span>: <span class="v">#FFFFFF</span>;
+
+  <span class="c">/* Surfaces sombres (footer, cards emphase) */</span>
+  <span class="p">--ink-surface</span>:   <span class="v">#14152B</span>;
+  <span class="p">--ink-surface-2</span>: <span class="v">#20223F</span>;
+
+  <span class="c">/* Rayons de bordure */</span>
+  <span class="p">--r-sm</span>: 12px;  <span class="p">--r-md</span>: 16px;  <span class="p">--r-lg</span>: 24px;
+  <span class="p">--r-xl</span>: 32px;  <span class="p">--r-pill</span>: 999px;
+
+  <span class="c">/* Ombres */</span>
+  <span class="p">--sh-sm</span>: 0 2px 8px rgba(20,21,43,.05);
+  <span class="p">--sh-md</span>: 0 8px 24px rgba(20,21,43,.06);
+  <span class="p">--sh-lg</span>: 0 16px 40px rgba(20,21,43,.08);
+  <span class="p">--sh-accent</span>: 0 8px 24px rgba(57,59,247,.28);
+
+  <span class="c">/* Typo + motion + conteneur */</span>
+  <span class="p">--font</span>: <span class="v">'Plus Jakarta Sans'</span>, system-ui, sans-serif;
+  <span class="p">--ease</span>: cubic-bezier(.4,0,.2,1);
+  <span class="p">--dur</span>:  200ms;
+  <span class="p">--container</span>: 1200px;
+}</pre>
+    </section>
+
+    <!-- 02 COULEURS -->
+    <section id="color">
+      <div class="sec-head">
+        <div class="sec-num">02 — COULEURS</div>
+        <h2>Palette</h2>
+        <p>Un accent, une échelle de neutres froids-clairs, une surface sombre pour les moments d'emphase. C'est tout. Pas d'autre teinte vive.</p>
+      </div>
+
+      <div class="panel">
+        <div class="label">Accent — Indigo</div>
+        <div class="swatches">
+          <div class="sw"><div class="box" style="background:#393BF7"></div><div class="meta"><b>Accent</b><code>#393BF7</code><small>Boutons, liens, focus</small></div></div>
+          <div class="sw"><div class="box" style="background:#2A2CD6"></div><div class="meta"><b>Accent Hover</b><code>#2A2CD6</code><small>Survol</small></div></div>
+          <div class="sw"><div class="box" style="background:#2225B0"></div><div class="meta"><b>Accent Active</b><code>#2225B0</code><small>Clic</small></div></div>
+          <div class="sw"><div class="box" style="background:#EBEBFE"></div><div class="meta"><b>Accent Tint</b><code>#EBEBFE</code><small>Fonds doux</small></div></div>
+          <div class="sw"><div class="box" style="background:#C9C9FB"></div><div class="meta"><b>Accent Border</b><code>#C9C9FB</code><small>Contours doux</small></div></div>
+        </div>
+      </div>
+
+      <div class="panel">
+        <div class="label">Neutres & surfaces</div>
+        <div class="swatches">
+          <div class="sw"><div class="box" style="background:#F6F7FB"></div><div class="meta"><b>Background</b><code>#F6F7FB</code><small>Fond de page</small></div></div>
+          <div class="sw"><div class="box" style="background:#FFFFFF"></div><div class="meta"><b>Surface</b><code>#FFFFFF</code><small>Cards</small></div></div>
+          <div class="sw"><div class="box" style="background:#EEF0F7"></div><div class="meta"><b>Surface Tint</b><code>#EEF0F7</code><small>Bandeaux</small></div></div>
+          <div class="sw"><div class="box" style="background:#E7E9F2"></div><div class="meta"><b>Border</b><code>#E7E9F2</code><small>Contours</small></div></div>
+          <div class="sw"><div class="box" style="background:#D6D9E6"></div><div class="meta"><b>Border Strong</b><code>#D6D9E6</code><small>Contours nets</small></div></div>
+        </div>
+      </div>
+
+      <div class="panel">
+        <div class="label">Encre & surface sombre</div>
+        <div class="swatches">
+          <div class="sw"><div class="box" style="background:#14152B"></div><div class="meta"><b>Ink</b><code>#14152B</code><small>Titres / footer</small></div></div>
+          <div class="sw"><div class="box" style="background:#4C4F6B"></div><div class="meta"><b>Ink 2</b><code>#4C4F6B</code><small>Paragraphes</small></div></div>
+          <div class="sw"><div class="box" style="background:#7C7F98"></div><div class="meta"><b>Ink 3</b><code>#7C7F98</code><small>Légendes</small></div></div>
+          <div class="sw"><div class="box" style="background:#20223F"></div><div class="meta"><b>Ink Surface 2</b><code>#20223F</code><small>Card sombre</small></div></div>
+        </div>
+      </div>
+
+      <div class="note">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M12 8v5M12 16h.01"/></svg>
+        <div><b>Règle d'or de contraste.</b> Texte sur fond clair = <span class="inline">--ink</span> ou <span class="inline">--ink-2</span> uniquement. Texte sur accent ou surface sombre = blanc. Ne jamais poser <span class="inline">--ink-3</span> sur du blanc pour du texte de contenu (réservé aux légendes courtes).</div>
+      </div>
+    </section>
+
+    <!-- 03 TYPO -->
+    <section id="type">
+      <div class="sec-head">
+        <div class="sec-num">03 — TYPOGRAPHIE</div>
+        <h2>Plus Jakarta Sans</h2>
+        <p>Une seule famille, chargée depuis Google Fonts. Poids utilisés : 400 / 500 / 600 / 700 / 800. Aucune autre police. Import en tête de page :</p>
+      </div>
+<pre><span class="c">&lt;!-- Dans le &lt;head&gt; --&gt;</span>
+&lt;link rel="preconnect" href="https://fonts.googleapis.com"&gt;
+&lt;link rel="preconnect" href="https://fonts.gstatic.com" crossorigin&gt;
+&lt;link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&<span class="v">display=swap</span>" rel="stylesheet"&gt;</pre>
+
+      <div class="panel" style="margin-top:20px">
+        <div class="spec">
+          <div class="demo" style="font-size:56px;font-weight:800;letter-spacing:-.03em;line-height:1.02">Lavage auto premium</div>
+          <div class="info">
+            <span class="pill-i">Rôle <b>H1 / Hero</b></span>
+            <span class="pill-i">Desktop <b>56px</b></span>
+            <span class="pill-i">Mobile <b>34–38px</b></span>
+            <span class="pill-i">Poids <b>800</b></span>
+            <span class="pill-i">Interligne <b>1.02</b></span>
+            <span class="pill-i">Interlettrage <b>-0.03em</b></span>
+          </div>
+        </div>
+        <div class="spec">
+          <div class="demo" style="font-size:40px;font-weight:800;letter-spacing:-.025em;line-height:1.1">Pourquoi nous choisir</div>
+          <div class="info">
+            <span class="pill-i">Rôle <b>H2 / Titre de section</b></span>
+            <span class="pill-i">Desktop <b>40px</b></span>
+            <span class="pill-i">Mobile <b>28px</b></span>
+            <span class="pill-i">Poids <b>800</b></span>
+            <span class="pill-i">Interligne <b>1.1</b></span>
+            <span class="pill-i">Interlettrage <b>-0.025em</b></span>
+          </div>
+        </div>
+        <div class="spec">
+          <div class="demo" style="font-size:24px;font-weight:700;letter-spacing:-.01em;line-height:1.25">Lavage intérieur complet</div>
+          <div class="info">
+            <span class="pill-i">Rôle <b>H3 / Titre de card</b></span>
+            <span class="pill-i">Taille <b>24px</b></span>
+            <span class="pill-i">Poids <b>700</b></span>
+            <span class="pill-i">Interligne <b>1.25</b></span>
+          </div>
+        </div>
+        <div class="spec">
+          <div class="demo" style="font-size:20px;font-weight:600;line-height:1.3">Sous-titre ou intitulé secondaire</div>
+          <div class="info">
+            <span class="pill-i">Rôle <b>H4</b></span>
+            <span class="pill-i">Taille <b>20px</b></span>
+            <span class="pill-i">Poids <b>600</b></span>
+          </div>
+        </div>
+        <div class="spec">
+          <div class="demo" style="font-size:13px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--accent)">Sur-titre / eyebrow</div>
+          <div class="info">
+            <span class="pill-i">Rôle <b>Eyebrow</b></span>
+            <span class="pill-i">Taille <b>13px</b></span>
+            <span class="pill-i">Poids <b>700</b></span>
+            <span class="pill-i">MAJUSCULES <b>+0.08em</b></span>
+            <span class="pill-i">Couleur <b>--accent</b></span>
+          </div>
+        </div>
+        <div class="spec">
+          <div class="demo" style="font-size:18px;font-weight:400;line-height:1.6;color:var(--ink-2)">Paragraphe d'introduction (lead). Sert à poser le contexte sous un titre. Ton clair et rassurant, phrases courtes.</div>
+          <div class="info">
+            <span class="pill-i">Rôle <b>Body Large / Lead</b></span>
+            <span class="pill-i">Taille <b>18px</b></span>
+            <span class="pill-i">Poids <b>400</b></span>
+            <span class="pill-i">Interligne <b>1.6</b></span>
+            <span class="pill-i">Couleur <b>--ink-2</b></span>
+          </div>
+        </div>
+        <div class="spec">
+          <div class="demo" style="font-size:16px;font-weight:400;line-height:1.65;color:var(--ink-2)">Texte courant. La taille de base du corps de texte sur tout le site. Toujours en <b>--ink-2</b> sur fond clair pour le confort de lecture.</div>
+          <div class="info">
+            <span class="pill-i">Rôle <b>Body</b></span>
+            <span class="pill-i">Taille <b>16px</b> (base)</span>
+            <span class="pill-i">Poids <b>400</b></span>
+            <span class="pill-i">Interligne <b>1.65</b></span>
+          </div>
+        </div>
+        <div class="spec">
+          <div class="demo" style="font-size:14px;font-weight:400;line-height:1.6;color:var(--ink-3)">Petit texte : mentions, notes de bas de card, métadonnées.</div>
+          <div class="info">
+            <span class="pill-i">Rôle <b>Body Small</b></span>
+            <span class="pill-i">Taille <b>14px</b></span>
+            <span class="pill-i">Poids <b>400</b></span>
+            <span class="pill-i">Couleur <b>--ink-3</b></span>
+          </div>
+        </div>
+        <div class="spec" style="border-bottom:0">
+          <div class="demo" style="font-size:12px;font-weight:600;line-height:1.4;text-transform:uppercase;letter-spacing:.05em;color:var(--ink-3)">Label / caption</div>
+          <div class="info">
+            <span class="pill-i">Rôle <b>Caption / Label</b></span>
+            <span class="pill-i">Taille <b>12px</b></span>
+            <span class="pill-i">Poids <b>600</b></span>
+          </div>
+        </div>
+      </div>
+
+      <div class="note">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 3v18M5 8l7-5 7 5"/></svg>
+        <div><b>Échelle responsive.</b> Utilise <span class="inline">clamp()</span> pour les gros titres : ex. H1 = <span class="inline">clamp(34px, 6vw, 56px)</span>, H2 = <span class="inline">clamp(28px, 4vw, 40px)</span>. Le corps de texte reste fixe à 16px.</div>
+      </div>
+    </section>
+
+    <!-- 04 ESPACEMENTS -->
+    <section id="space">
+      <div class="sec-head">
+        <div class="sec-num">04 — ESPACEMENTS</div>
+        <h2>Grille de 8px</h2>
+        <p>Toutes les marges, paddings et gaps sont des multiples de 8 (avec demi-pas de 4). Jamais de valeur arbitraire type 13px ou 27px. Ça garantit un rythme vertical cohérent.</p>
+      </div>
+      <div class="panel">
+        <div class="space-row"><span class="t"><b>4px</b> · xs</span><div class="bar" style="width:4px"></div></div>
+        <div class="space-row"><span class="t"><b>8px</b> · sm</span><div class="bar" style="width:8px"></div></div>
+        <div class="space-row"><span class="t"><b>12px</b> · md</span><div class="bar" style="width:12px"></div></div>
+        <div class="space-row"><span class="t"><b>16px</b> · lg</span><div class="bar" style="width:16px"></div></div>
+        <div class="space-row"><span class="t"><b>24px</b> · xl</span><div class="bar" style="width:24px"></div></div>
+        <div class="space-row"><span class="t"><b>32px</b> · 2xl</span><div class="bar" style="width:32px"></div></div>
+        <div class="space-row"><span class="t"><b>48px</b> · 3xl</span><div class="bar" style="width:48px"></div></div>
+        <div class="space-row"><span class="t"><b>64px</b> · 4xl</span><div class="bar" style="width:64px"></div></div>
+        <div class="space-row"><span class="t"><b>96px</b> · 5xl</span><div class="bar" style="width:96px"></div></div>
+      </div>
+      <table class="tbl" style="margin-top:24px">
+        <thead><tr><th>Usage</th><th>Valeur</th></tr></thead>
+        <tbody>
+          <tr><td><b>Padding vertical d'une section</b> (desktop / mobile)</td><td><code>96px</code> / <code>64px</code></td></tr>
+          <tr><td><b>Padding intérieur d'une card</b></td><td><code>28px</code> à <code>32px</code></td></tr>
+          <tr><td><b>Gap entre cards d'une grille</b></td><td><code>24px</code></td></tr>
+          <tr><td><b>Espace titre → paragraphe</b></td><td><code>12px</code> à <code>16px</code></td></tr>
+          <tr><td><b>Espace eyebrow → titre</b></td><td><code>12px</code></td></tr>
+          <tr><td><b>Gap entre champs de formulaire</b></td><td><code>18px</code></td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <!-- 05 RAYONS -->
+    <section id="radius">
+      <div class="sec-head">
+        <div class="sec-num">05 — RAYONS DE BORDURE</div>
+        <h2>Coins arrondis, générosité contrôlée</h2>
+        <p>La rondeur est une signature de la charte (héritée du design de référence). Boutons et badges = pilule pleine. Cards = grand rayon. Champs = rayon moyen.</p>
+      </div>
+      <div class="panel">
+        <div class="radius-demo">
+          <div class="rd"><div class="b" style="border-radius:8px"></div><small>xs · <code>8px</code></small></div>
+          <div class="rd"><div class="b" style="border-radius:12px"></div><small>sm · <code>12px</code></small></div>
+          <div class="rd"><div class="b" style="border-radius:16px"></div><small>md · <code>16px</code></small></div>
+          <div class="rd"><div class="b" style="border-radius:24px"></div><small>lg · <code>24px</code></small></div>
+          <div class="rd"><div class="b" style="border-radius:32px"></div><small>xl · <code>32px</code></small></div>
+          <div class="rd"><div class="b" style="border-radius:999px;height:88px"></div><small>pill · <code>999px</code></small></div>
+        </div>
+      </div>
+      <table class="tbl" style="margin-top:24px">
+        <thead><tr><th>Élément</th><th>Rayon</th></tr></thead>
+        <tbody>
+          <tr><td><b>Boutons, badges, puces</b></td><td><code>--r-pill</code> (999px)</td></tr>
+          <tr><td><b>Champs de formulaire, petits éléments</b></td><td><code>--r-sm</code> (12px)</td></tr>
+          <tr><td><b>Icônes carrées (cercles d'accent)</b></td><td><code>--r-md</code> (16px) — ou 50% pour un rond</td></tr>
+          <tr><td><b>Cards, encarts</b></td><td><code>--r-lg</code> (24px)</td></tr>
+          <tr><td><b>Grands blocs, images hero, bandeaux stats</b></td><td><code>--r-xl</code> (32px)</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <!-- 06 OMBRES -->
+    <section id="shadow">
+      <div class="sec-head">
+        <div class="sec-num">06 — OMBRES & ÉLÉVATION</div>
+        <h2>Douces, jamais dures</h2>
+        <p>Les ombres sont diffuses et discrètes, teintées vers l'encre (bleu-noir) et non le noir pur. Elles servent uniquement à décoller un élément au survol ou à isoler une card importante (formulaire).</p>
+      </div>
+      <div class="panel">
+        <div class="shadow-demo">
+          <div class="shd" style="box-shadow:var(--sh-xs)"><small>xs<code>ombre au repos, subtile</code></small></div>
+          <div class="shd" style="box-shadow:var(--sh-sm)"><small>sm<code>cards par défaut</code></small></div>
+          <div class="shd" style="box-shadow:var(--sh-md)"><small>md<code>card au survol</code></small></div>
+          <div class="shd" style="box-shadow:var(--sh-lg)"><small>lg<code>formulaire, modal</code></small></div>
+          <div class="shd" style="box-shadow:var(--sh-xl)"><small>xl<code>élément flottant</code></small></div>
+          <div class="shd" style="box-shadow:var(--sh-accent);background:var(--accent);"><small style="color:#fff">accent<code style="color:rgba(255,255,255,.7)">survol bouton</code></small></div>
+        </div>
+      </div>
+<pre><span class="p">--sh-xs</span>: 0 1px 2px  rgba(20,21,43,.04);
+<span class="p">--sh-sm</span>: 0 2px 8px  rgba(20,21,43,.05);   <span class="c">/* card au repos */</span>
+<span class="p">--sh-md</span>: 0 8px 24px rgba(20,21,43,.06);   <span class="c">/* card au survol */</span>
+<span class="p">--sh-lg</span>: 0 16px 40px rgba(20,21,43,.08);  <span class="c">/* formulaire */</span>
+<span class="p">--sh-xl</span>: 0 24px 64px rgba(20,21,43,.10);
+<span class="p">--sh-accent</span>: 0 8px 24px rgba(57,59,247,.28); <span class="c">/* halo bouton primaire au survol */</span></pre>
+    </section>
+
+    <!-- 07 BORDURES -->
+    <section id="border">
+      <div class="sec-head">
+        <div class="sec-num">07 — BORDURES & SÉPARATEURS</div>
+        <h2>Fines et calmes</h2>
+        <p>Toujours 1px. Deux niveaux : bordure standard pour délimiter, bordure nette pour les éléments interactifs au repos (boutons secondaires, inputs).</p>
+      </div>
+      <div class="grid g3">
+        <div class="panel" style="border:1px solid var(--border)"><div class="label" style="margin-bottom:8px">Standard</div><code style="color:var(--accent);font-size:13px">1px solid --border</code><p style="font-size:13.5px;color:var(--ink-2);margin-top:10px">Contour des cards, séparateurs de section.</p></div>
+        <div class="panel" style="border:1px solid var(--border-strong)"><div class="label" style="margin-bottom:8px">Net</div><code style="color:var(--accent);font-size:13px">1px solid --border-strong</code><p style="font-size:13.5px;color:var(--ink-2);margin-top:10px">Boutons secondaires, contours au repos.</p></div>
+        <div class="panel" style="border:1.5px solid var(--accent-border)"><div class="label" style="margin-bottom:8px">Accent doux</div><code style="color:var(--accent);font-size:13px">1.5px solid --accent-border</code><p style="font-size:13.5px;color:var(--ink-2);margin-top:10px">Cards mises en avant, éléments sélectionnés.</p></div>
+      </div>
+      <div class="note">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 12h16"/></svg>
+        <div><b>Séparateur horizontal.</b> Un simple <span class="inline">height:1px; background:var(--border)</span> — pas de <span class="inline">&lt;hr&gt;</span> stylé lourdement. Discret, il structure sans distraire.</div>
+      </div>
+    </section>
+
+    <!-- 08 BOUTONS -->
+    <section id="btn">
+      <div class="sec-head">
+        <div class="sec-num">08 — BOUTONS</div>
+        <h2>Actions</h2>
+        <p>Forme pilule. Le primaire indigo est réservé à l'action principale d'une section (une seule par vue). Le secondaire l'accompagne. États survol/clic/focus tous définis.</p>
+      </div>
+
+      <div class="panel">
+        <div class="label">Variantes & tailles — survole-les</div>
+        <div class="btn-tray" style="margin-bottom:24px">
+          <button class="btn btn-primary">Réserver un lavage</button>
+          <button class="btn btn-secondary">Voir les formules</button>
+          <button class="btn btn-ghost">En savoir plus →</button>
+          <button class="btn btn-dark">Nous appeler</button>
+        </div>
+        <div class="btn-tray" style="margin-bottom:24px">
+          <button class="btn btn-primary btn-sm">Small · 14px</button>
+          <button class="btn btn-primary">Medium · 15px</button>
+          <button class="btn btn-primary btn-lg">Large · 16px</button>
+        </div>
+        <div class="btn-tray">
+          <button class="btn btn-primary"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 4h4l2 5-3 2a11 11 0 0 0 5 5l2-3 5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2z"/></svg>07 82 00 00 00</button>
+          <button class="btn btn-secondary">Devis gratuit<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
+        </div>
+      </div>
+
+      <table class="tbl" style="margin-top:24px">
+        <thead><tr><th>Propriété</th><th>Primaire</th><th>Secondaire</th></tr></thead>
+        <tbody>
+          <tr><td><b>Fond</b></td><td><code>--accent</code></td><td><code>--surface</code></td></tr>
+          <tr><td><b>Texte</b></td><td>#FFFFFF</td><td><code>--ink</code></td></tr>
+          <tr><td><b>Bordure</b></td><td>aucune</td><td><code>1px --border-strong</code></td></tr>
+          <tr><td><b>Rayon</b></td><td colspan="2"><code>--r-pill</code> (999px)</td></tr>
+          <tr><td><b>Padding (md)</b></td><td colspan="2"><code>14px 28px</code></td></tr>
+          <tr><td><b>Poids / taille</b></td><td colspan="2"><code>600</code> / <code>15px</code></td></tr>
+          <tr><td><b>Survol</b></td><td>fond <code>--accent-hover</code> + <code>--sh-accent</code> + <code>translateY(-1px)</code></td><td>bordure <code>--accent</code> + texte <code>--accent</code> + fond <code>--accent-tint</code></td></tr>
+          <tr><td><b>Clic (active)</b></td><td>fond <code>--accent-active</code>, sans transform</td><td>fond <code>--accent-tint-strong</code></td></tr>
+          <tr><td><b>Focus clavier</b></td><td colspan="2"><code>outline: 2px solid --accent; outline-offset: 2px</code> (obligatoire — accessibilité)</td></tr>
+          <tr><td><b>Transition</b></td><td colspan="2"><code>all 200ms var(--ease)</code></td></tr>
+        </tbody>
+      </table>
+
+<pre><span class="c">/* Bouton primaire — implémentation de référence */</span>
+<span class="p">.btn-primary</span>{
+  display:inline-flex; align-items:center; gap:9px;
+  font-weight:600; font-size:15px; line-height:1;
+  padding:14px 28px; border-radius:var(--r-pill);
+  background:var(--accent); color:#fff; border:none; cursor:pointer;
+  transition:all var(--dur) var(--ease);
+}
+<span class="p">.btn-primary:hover</span>{
+  background:var(--accent-hover);
+  box-shadow:var(--sh-accent);
+  transform:translateY(-1px);
+}
+<span class="p">.btn-primary:active</span>{ background:var(--accent-active); transform:none; box-shadow:none; }
+<span class="p">.btn-primary:focus-visible</span>{ outline:2px solid var(--accent); outline-offset:2px; }</pre>
+    </section>
+
+    <!-- 09 CARDS -->
+    <section id="cards">
+      <div class="sec-head">
+        <div class="sec-num">09 — CARDS</div>
+        <h2>Le composant central</h2>
+        <p>Toute la page se construit avec des cards. Quatre variantes seulement. Anatomie constante : cercle d'icône → titre → texte. Survol = léger décollement.</p>
+      </div>
+
+      <div class="grid g3">
+        <div class="card">
+          <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l2-5a2 2 0 0 1 2-1h6a2 2 0 0 1 2 1l2 5M5 13h14v4a1 1 0 0 1-1 1h-1a1 1 0 0 1-1-1v-1H8v1a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1z"/><circle cx="8" cy="15" r="1"/><circle cx="16" cy="15" r="1"/></svg></div>
+          <h4>Lavage extérieur</h4>
+          <p>Carrosserie, jantes et vitres. Résultat éclatant en 20 minutes, produits sans risque pour le vernis.</p>
+        </div>
+        <div class="card card-tint">
+          <div class="ic" style="background:var(--surface)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v3M12 18v3M3 12h3M18 12h3M6 6l2 2M16 16l2 2M18 6l-2 2M8 16l-2 2"/><circle cx="12" cy="12" r="3"/></svg></div>
+          <h4>Card « Tint »</h4>
+          <p>Fond <span class="inline">--accent-tint</span>. Pour attirer l'œil sur une offre clé au milieu d'une grille.</p>
+        </div>
+        <div class="card card-dark">
+          <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l7 4v5c0 4-3 7-7 9-4-2-7-5-7-9V7z"/></svg></div>
+          <h4>Card « Dark »</h4>
+          <p>Fond <span class="inline" style="background:rgba(255,255,255,.1);color:#fff;border-color:rgba(255,255,255,.2)">--ink-surface</span>. Emphase maximale — un seul par section.</p>
+        </div>
+      </div>
+
+      <table class="tbl" style="margin-top:24px">
+        <thead><tr><th>Propriété</th><th>Valeur</th></tr></thead>
+        <tbody>
+          <tr><td><b>Fond</b></td><td><code>--surface</code> (défaut) · <code>--accent-tint</code> (tint) · <code>--ink-surface</code> (dark)</td></tr>
+          <tr><td><b>Bordure</b></td><td><code>1px solid --border</code> (retirée au survol des cards par défaut)</td></tr>
+          <tr><td><b>Rayon</b></td><td><code>--r-lg</code> (24px)</td></tr>
+          <tr><td><b>Padding</b></td><td><code>28px</code> (mobile) → <code>32px</code> (desktop)</td></tr>
+          <tr><td><b>Ombre au repos</b></td><td>aucune ou <code>--sh-sm</code></td></tr>
+          <tr><td><b>Survol</b></td><td><code>translateY(-4px)</code> + <code>--sh-lg</code> + <code>200ms var(--ease)</code></td></tr>
+          <tr><td><b>Cercle d'icône</b></td><td><code>52×52px</code>, rayon <code>14px</code>, fond <code>--accent-tint</code>, icône 24px <code>--accent</code></td></tr>
+          <tr><td><b>Titre</b></td><td>H4 · 19–24px · poids 700</td></tr>
+          <tr><td><b>Texte</b></td><td>14.5px · <code>--ink-2</code></td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <!-- 10 FORMULAIRES -->
+    <section id="forms">
+      <div class="sec-head">
+        <div class="sec-num">10 — FORMULAIRES</div>
+        <h2>Le composant qui génère le lead</h2>
+        <p>C'est l'objectif de la page. Le formulaire est posé dans une card blanche élevée, champs larges et respirants, focus indigo clair. Prévois un honeypot anti-spam invisible.</p>
+      </div>
+
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:32px;align-items:start" class="form-wrapper">
+        <form class="form-card" onsubmit="return false">
+          <div style="font-size:22px;font-weight:800;letter-spacing:-.02em;margin-bottom:6px">Devis en 30 secondes</div>
+          <p style="font-size:14px;color:var(--ink-2);margin-bottom:22px">Réponse sous 1h ouvrée.</p>
+          <div class="field"><label>Nom complet</label><input type="text" placeholder="Jean Dupont"></div>
+          <div class="field"><label>Téléphone</label><input type="tel" placeholder="06 12 34 56 78"></div>
+          <div class="field"><label>Type de véhicule</label>
+            <select><option>Citadine</option><option>Berline / Break</option><option>SUV / 4×4</option><option>Utilitaire</option></select>
+          </div>
+          <div class="field"><label>Précisez votre besoin</label><textarea placeholder="Lavage complet intérieur + extérieur…"></textarea></div>
+          <input type="text" name="website" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true">
+          <button class="btn btn-primary btn-block">Recevoir mon devis</button>
+        </form>
+
+        <div>
+          <table class="tbl">
+            <thead><tr><th>Propriété</th><th>Valeur</th></tr></thead>
+            <tbody>
+              <tr><td><b>Card conteneur</b></td><td>fond blanc · rayon <code>--r-xl</code> (32px) · <code>--sh-lg</code> · padding 34px</td></tr>
+              <tr><td><b>Label</b></td><td>14px · poids 600 · <code>--ink</code> · marge basse 8px</td></tr>
+              <tr><td><b>Input / select / textarea</b></td><td>padding <code>13px 15px</code> · rayon <code>--r-sm</code> · bordure <code>1px --border</code> · 15px</td></tr>
+              <tr><td><b>Placeholder</b></td><td><code>--ink-3</code></td></tr>
+              <tr><td><b>Focus</b></td><td>bordure <code>--accent</code> + halo <code>0 0 0 4px rgba(57,59,247,.12)</code></td></tr>
+              <tr><td><b>Gap entre champs</b></td><td><code>18px</code></td></tr>
+              <tr><td><b>Bouton envoi</b></td><td>primaire pleine largeur (<code>.btn-block</code>)</td></tr>
+              <tr><td><b>Honeypot</b></td><td>champ <code>name="website"</code> caché en <code>left:-9999px</code> — rejet si rempli</td></tr>
+              <tr><td><b>État erreur</b></td><td>bordure <code>--error</code> + message 13px sous le champ</td></tr>
+              <tr><td><b>État succès</b></td><td>remplacer le formulaire par un bloc confirmation (icône check + message)</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- 11 BADGES -->
+    <section id="badges">
+      <div class="sec-head">
+        <div class="sec-num">11 — BADGES, PUCES & INDICATEURS</div>
+        <h2>Micro-signaux</h2>
+        <p>Petits éléments de réassurance : disponibilité, notation, arguments. Forme pilule, discrets, jamais criards.</p>
+      </div>
+      <div class="panel">
+        <div class="badge-tray">
+          <span class="badge badge-accent"><span class="d"></span>Éco-responsable</span>
+          <span class="badge badge-accent">Sans eau disponible</span>
+          <span class="badge badge-neutral">À domicile</span>
+          <span class="badge badge-success"><span class="d"></span>Disponible aujourd'hui</span>
+          <span class="badge badge-neutral">⭐ 4.9/5 · 320 avis</span>
+        </div>
+      </div>
+      <table class="tbl" style="margin-top:24px">
+        <thead><tr><th>Variante</th><th>Fond</th><th>Texte</th></tr></thead>
+        <tbody>
+          <tr><td><b>Accent</b></td><td><code>--accent-tint</code></td><td><code>--accent</code></td></tr>
+          <tr><td><b>Neutre</b></td><td><code>--surface-tint</code></td><td><code>--ink-2</code></td></tr>
+          <tr><td><b>Succès</b> (disponibilité)</td><td>#E6F7EF</td><td>#0A8A50</td></tr>
+          <tr><td colspan="3" style="padding-top:16px"><b>Commun :</b> padding <code>6px 13px</code> · rayon <code>--r-pill</code> · 13px · poids 600. Point indicateur optionnel de 7px.</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <!-- 12 IMAGES -->
+    <section id="media">
+      <div class="sec-head">
+        <div class="sec-num">12 — IMAGES & MÉDIAS</div>
+        <h2>Traitement visuel</h2>
+        <p>Photos réelles de véhicules propres, brillants, lumière naturelle. Toujours dans un conteneur arrondi. Superposition de texte via un dégradé sombre pour garantir la lisibilité.</p>
+      </div>
+      <table class="tbl">
+        <thead><tr><th>Règle</th><th>Valeur</th></tr></thead>
+        <tbody>
+          <tr><td><b>Rayon des conteneurs image</b></td><td><code>--r-lg</code> (24px) · <code>--r-xl</code> (32px) pour le hero</td></tr>
+          <tr><td><b>Ratios recommandés</b></td><td>Hero <code>16:10</code> · card <code>4:3</code> · vignette <code>1:1</code></td></tr>
+          <tr><td><b>Object-fit</b></td><td><code>cover</code> systématiquement, jamais de déformation</td></tr>
+          <tr><td><b>Overlay texte sur image</b></td><td><code>linear-gradient(180deg, transparent 40%, rgba(20,21,43,.75))</code></td></tr>
+          <tr><td><b>Chargement</b></td><td><code>loading="lazy"</code> sauf l'image hero · dimensions <code>width/height</code> explicites (évite le CLS)</td></tr>
+          <tr><td><b>Format</b></td><td>WebP/AVIF avec fallback · compressé · <code>alt</code> descriptif obligatoire (SEO)</td></tr>
+          <tr><td><b>Filigrane/ombre</b></td><td>image hero peut porter <code>--sh-xl</code> pour la détacher du fond</td></tr>
+        </tbody>
+      </table>
+      <div class="note">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="4"/><circle cx="9" cy="9" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
+        <div><b>Cohérence photo.</b> Même température de lumière et même style sur toutes les images (idéalement une seule séance). Des visuels dépareillés cassent instantanément l'effet premium.</div>
+      </div>
+    </section>
+
+    <!-- 13 ICONES -->
+    <section id="icons">
+      <div class="sec-head">
+        <div class="sec-num">13 — ICÔNES</div>
+        <h2>Jeu d'icônes</h2>
+        <p>Une seule bibliothèque, style linéaire (outline). Recommandation : <b>Lucide</b> (lucide.dev) — libre, moderne, exhaustive, cohérente avec la rondeur de la charte.</p>
+      </div>
+      <div class="panel">
+        <div style="display:flex;flex-wrap:wrap;gap:20px;align-items:center">
+          <div style="width:52px;height:52px;border-radius:14px;background:var(--accent-tint);display:grid;place-items:center"><svg viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" style="width:26px;height:26px"><path d="M5 13l2-5a2 2 0 0 1 2-1h6a2 2 0 0 1 2 1l2 5v4a1 1 0 0 1-1 1h-1a1 1 0 0 1-1-1v-1H8v1a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1z"/></svg></div>
+          <div style="width:52px;height:52px;border-radius:14px;background:var(--accent-tint);display:grid;place-items:center"><svg viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" style="width:26px;height:26px"><path d="M7 3v4M17 3v4M4 9h16M6 5h12a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2z"/></svg></div>
+          <div style="width:52px;height:52px;border-radius:14px;background:var(--accent-tint);display:grid;place-items:center"><svg viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" style="width:26px;height:26px"><path d="M12 3l7 4v5c0 4-3 7-7 9-4-2-7-5-7-9V7z"/><path d="M9 12l2 2 4-4"/></svg></div>
+          <div style="width:52px;height:52px;border-radius:14px;background:var(--accent-tint);display:grid;place-items:center"><svg viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" style="width:26px;height:26px"><path d="M21 10c0 7-9 12-9 12s-9-5-9-12a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
+          <div style="width:52px;height:52px;border-radius:14px;background:var(--accent-tint);display:grid;place-items:center"><svg viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" style="width:26px;height:26px"><path d="M12 6v6l4 2"/><circle cx="12" cy="12" r="9"/></svg></div>
+          <div style="width:52px;height:52px;border-radius:14px;background:var(--accent-tint);display:grid;place-items:center"><svg viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" style="width:26px;height:26px"><path d="M20 6L9 17l-5-5"/></svg></div>
+        </div>
+      </div>
+      <table class="tbl" style="margin-top:24px">
+        <thead><tr><th>Contexte</th><th>Taille</th><th>Épaisseur trait</th></tr></thead>
+        <tbody>
+          <tr><td><b>Cercle d'icône de card</b></td><td>24px (dans cercle 52px)</td><td>1.75–2px</td></tr>
+          <tr><td><b>Inline dans bouton / texte</b></td><td>16–17px</td><td>2px</td></tr>
+          <tr><td><b>Puce de liste</b></td><td>18–20px</td><td>2px</td></tr>
+        </tbody>
+      </table>
+      <div class="note">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M12 8v5M12 16h.01"/></svg>
+        <div>Couleur d'icône = <span class="inline">--accent</span> dans les cercles tint, <span class="inline">currentColor</span> (hérite du texte) dans les boutons et le contenu. Ne jamais mélanger icônes pleines et outline.</div>
+      </div>
+    </section>
+
+    <!-- 14 GRILLE -->
+    <section id="layout">
+      <div class="sec-head">
+        <div class="sec-num">14 — GRILLE & MISE EN PAGE</div>
+        <h2>Structure & responsive</h2>
+        <p>Conteneur centré, grilles fluides, points de rupture standards. Tout passe en une colonne sur mobile.</p>
+      </div>
+      <table class="tbl">
+        <thead><tr><th>Élément</th><th>Valeur</th></tr></thead>
+        <tbody>
+          <tr><td><b>Largeur max de contenu</b></td><td><code>1200px</code> centré (<code>margin:0 auto</code>)</td></tr>
+          <tr><td><b>Marge latérale (padding conteneur)</b></td><td><code>24px</code> desktop · <code>16px</code> mobile</td></tr>
+          <tr><td><b>Colonnes de grille</b></td><td>services/features en <code>3</code> col · <code>2</code> sur tablette · <code>1</code> sur mobile</td></tr>
+          <tr><td><b>Gap de grille</b></td><td><code>24px</code></td></tr>
+          <tr><td><b>Padding vertical section</b></td><td><code>96px</code> desktop · <code>64px</code> mobile</td></tr>
+        </tbody>
+      </table>
+      <div class="panel" style="margin-top:20px">
+        <div class="label">Points de rupture (breakpoints)</div>
+        <table class="tbl">
+          <tbody>
+            <tr><td><b>sm</b></td><td><code>640px</code></td><td>petits mobiles → grands mobiles</td></tr>
+            <tr><td><b>md</b></td><td><code>768px</code></td><td>tablette (grilles passent en 2 col)</td></tr>
+            <tr><td><b>lg</b></td><td><code>1024px</code></td><td>desktop (grilles pleines, nav horizontale)</td></tr>
+            <tr><td><b>xl</b></td><td><code>1280px</code></td><td>large desktop</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- 15 MOTION -->
+    <section id="motion">
+      <div class="sec-head">
+        <div class="sec-num">15 — MOTION & TRANSITIONS</div>
+        <h2>Mouvement discret</h2>
+        <p>Le mouvement guide, il ne distrait pas. Micro-interactions au survol, apparition douce au scroll. Rien qui clignote ou rebondit.</p>
+      </div>
+      <table class="tbl">
+        <thead><tr><th>Interaction</th><th>Effet</th><th>Durée / courbe</th></tr></thead>
+        <tbody>
+          <tr><td><b>Survol bouton</b></td><td><code>translateY(-1px)</code> + halo</td><td>200ms · <code>ease</code></td></tr>
+          <tr><td><b>Survol card</b></td><td><code>translateY(-4px)</code> + ombre</td><td>200ms · <code>ease</code></td></tr>
+          <tr><td><b>Focus champ</b></td><td>bordure + halo</td><td>200ms · <code>ease</code></td></tr>
+          <tr><td><b>Apparition au scroll</b></td><td><code>opacity 0→1</code> + <code>translateY(16px→0)</code></td><td>500–600ms · <code>ease-out</code></td></tr>
+        </tbody>
+      </table>
+<pre><span class="p">--ease</span>: cubic-bezier(.4,0,.2,1);
+<span class="p">--dur</span>:  200ms;
+
+<span class="c">/* Respecter l'accessibilité — OBLIGATOIRE */</span>
+<span class="p">@media</span> (prefers-reduced-motion: reduce){
+  *{ animation:none !important; transition:none !important; }
+}</pre>
+    </section>
+
+    <!-- 16 SIGNATURE -->
+    <section id="signature">
+      <div class="sec-head">
+        <div class="sec-num">16 — SIGNATURE VISUELLE</div>
+        <h2>Les 3 marqueurs à ne jamais oublier</h2>
+        <p>Ce sont eux qui donnent l'identité de la page. Reproduis-les à l'identique.</p>
+      </div>
+
+      <div class="grid g3">
+        <div class="panel">
+          <div class="label">1 · Titre bicolore</div>
+          <div style="font-size:26px;font-weight:800;letter-spacing:-.02em;line-height:1.15">Un lavage <span style="color:var(--accent)">impeccable</span>, sans effort</div>
+          <p style="font-size:13.5px;color:var(--ink-2);margin-top:12px">Le ou les mots-clés du titre passent en <span class="inline">--accent</span>. Le reste en <span class="inline">--ink</span>. Un seul segment coloré par titre.</p>
+        </div>
+        <div class="panel">
+          <div class="label">2 · Bandeau de stats sombre</div>
+          <div style="background:var(--ink-surface);border-radius:var(--r-md);padding:20px;display:flex;gap:20px">
+            <div><div style="font-size:28px;font-weight:800;color:#fff;line-height:1">5000<span style="color:var(--accent-border)">+</span></div><div style="font-size:11px;color:rgba(255,255,255,.6);margin-top:4px">véhicules lavés</div></div>
+            <div><div style="font-size:28px;font-weight:800;color:#fff;line-height:1">4.9<span style="color:var(--accent-border)">/5</span></div><div style="font-size:11px;color:rgba(255,255,255,.6);margin-top:4px">note moyenne</div></div>
+          </div>
+          <p style="font-size:13.5px;color:var(--ink-2);margin-top:12px">Chiffres clés sur fond sombre, symbole (+, /5) teinté <span class="inline">--accent-border</span>.</p>
+        </div>
+        <div class="panel">
+          <div class="label">3 · Cercle d'icône tinté</div>
+          <div style="width:52px;height:52px;border-radius:14px;background:var(--accent-tint);display:grid;place-items:center"><svg viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:24px;height:24px"><path d="M12 3l7 4v5c0 4-3 7-7 9-4-2-7-5-7-9V7z"/><path d="M9 12l2 2 4-4"/></svg></div>
+          <p style="font-size:13.5px;color:var(--ink-2);margin-top:12px">Chaque feature/service ouvre sur un cercle arrondi <span class="inline">--accent-tint</span> avec icône <span class="inline">--accent</span>. Systématique.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 17 BLUEPRINTS -->
+    <section id="blueprint">
+      <div class="sec-head">
+        <div class="sec-num">17 — BLUEPRINTS DES SECTIONS</div>
+        <h2>Structure de la landing page</h2>
+        <p>Les dispositions ci-dessous sont reprises <b>fidèlement de la maquette</b> — pas des grilles génériques. Quatre patterns maîtres à reproduire à l'identique (avec leurs specs de grille), puis l'ordre d'assemblage de la landing.</p>
+      </div>
+
+      <div class="note">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="4"/><path d="M3 9h18M9 21V9"/></svg>
+        <div><b>Ce sont les 4 compositions exactes de la maquette de référence.</b> La disposition prime : mêmes ancrages, mêmes proportions de colonnes, mêmes tailles de cellules. Le développeur reproduit ces schémas, pas des rangées uniformes.</div>
+      </div>
+
+      <!-- PATTERN A -->
+      <div class="panel" style="margin-top:20px">
+        <div class="pattern-head"><span class="pn">A</span><h4>Hero en superposition</h4></div>
+        <p style="font-size:14.5px;color:var(--ink-2)">Une <b>seule image plein cadre</b> arrondie. Le titre est posé <b>en superposition, ancré en bas à gauche</b>. Un bloc texte + bouton est ancré <b>en bas à droite</b>, sur l'image. Pas de colonne texte séparée.</p>
+
+        <div class="wire" style="padding:0;border:none;margin-top:16px">
+          <div style="position:relative;border-radius:var(--r-xl);overflow:hidden;min-height:240px;background:repeating-linear-gradient(135deg,#c4c8d4,#c4c8d4 12px,#d4d7e1 12px,#d4d7e1 24px)">
+            <div style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(20,21,43,.18) 0%,transparent 34%,rgba(20,21,43,.72) 100%)"></div>
+            <span style="position:absolute;top:14px;left:18px;font-size:10px;font-weight:700;color:rgba(255,255,255,.9);letter-spacing:.05em;z-index:2">IMAGE PLEIN CADRE · object-fit: cover</span>
+            <span style="position:absolute;top:14px;right:18px;font-size:10px;font-weight:600;color:rgba(255,255,255,.75);z-index:2">nav transparente</span>
+            <div style="position:absolute;left:26px;bottom:28px;max-width:48%;z-index:2">
+              <div style="font-size:clamp(16px,2.4vw,22px);font-weight:800;color:#fff;line-height:1.12;letter-spacing:-.02em">Titre H1 <span style="color:#B9BAFF">bicolore</span><br>ancré en bas à gauche</div>
+            </div>
+            <div style="position:absolute;right:26px;bottom:28px;max-width:34%;z-index:2">
+              <div style="font-size:11px;color:rgba(255,255,255,.9);line-height:1.5">Court paragraphe + CTA, alignés en bas à droite.</div>
+              <span style="display:inline-block;margin-top:11px;background:#fff;color:var(--ink);font-size:11px;font-weight:700;padding:9px 15px;border-radius:999px">Réserver</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="spec-box">
+          <b class="st">Specs de grille</b>
+          <div class="sr">
+            <div>Conteneur : 1 image, rayon <code>--r-xl</code>, <code>overflow:hidden</code>, hauteur <code>min-height: 560px</code> (desktop) / <code>440px</code> (mobile).</div>
+            <div>Overlay lisibilité : <code>linear-gradient(180deg, rgba(20,21,43,.18), transparent 34%, rgba(20,21,43,.72))</code>.</div>
+            <div>Nav : posée sur l'image en haut, fond transparent (devient <code>--surface</code> au scroll une fois sticky).</div>
+            <div>Titre H1 : <code>position:absolute</code>, <code>left:0 / bottom:0</code>, <code>max-width:50%</code>, texte blanc.</div>
+            <div>Bloc texte+CTA : <code>position:absolute</code>, <code>right:0 / bottom:0</code>, <code>max-width:38%</code>.</div>
+            <div>Mobile : le bloc droit passe <b>sous</b> le titre, tout empilé, image conservée en fond.</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- PATTERN B -->
+      <div class="panel" style="margin-top:20px">
+        <div class="pattern-head"><span class="pn">B</span><h4>Duo : card-stats + card texte-image</h4></div>
+        <p style="font-size:14.5px;color:var(--ink-2)"><b>Deux cards côte à côte.</b> À gauche, une card <b>verticale et étroite</b> avec les chiffres empilés. À droite, une card <b>large</b> contenant le texte + une <b>image ronde encastrée</b> dans la card elle-même.</p>
+
+        <div class="wire" style="margin-top:16px">
+          <div style="display:grid;grid-template-columns:0.85fr 1.35fr;gap:14px">
+            <div class="wbox tint" style="min-height:158px;justify-content:space-between">
+              <div style="width:32px;height:32px;border-radius:9px;background:var(--surface);opacity:.75"></div>
+              <div>
+                <div style="font-size:24px;font-weight:800;color:var(--accent);line-height:1">150+</div>
+                <div class="ws" style="margin-top:1px">Fournisseurs</div>
+                <div style="font-size:24px;font-weight:800;color:var(--accent);line-height:1;margin-top:11px">15+</div>
+                <div class="ws" style="margin-top:1px">Années</div>
+              </div>
+            </div>
+            <div class="wbox" style="min-height:158px;flex-direction:row;align-items:center;gap:16px">
+              <div style="flex:1">
+                <div class="wl">Titre « Qui sommes-nous »</div>
+                <div class="ws" style="margin-top:7px">Paragraphe 1 ——————————<br>———————————————<br><br>Paragraphe 2 ——————————</div>
+              </div>
+              <div style="width:78px;height:92px;border-radius:44px;background:repeating-linear-gradient(135deg,#d4d7e1,#d4d7e1 8px,#e7e9f2 8px,#e7e9f2 16px);flex-shrink:0"></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="spec-box">
+          <b class="st">Specs de grille</b>
+          <div class="sr">
+            <div>Grille : <code>grid-template-columns: 0.85fr 1.35fr</code>, <code>gap: 24px</code>.</div>
+            <div>Card gauche (stats) : fond <code>--accent-tint</code>, rayon <code>--r-lg</code>, motif/icône en haut, 2 stats empilés (nombre <code>--accent</code> 44px + label <code>--ink-3</code>).</div>
+            <div>Card droite : <code>display:flex</code> horizontal — texte à gauche (titre + 2 paragraphes), <b>image encastrée à droite</b> (<code>border-radius: 40px</code> ou ovale), largeur ~38% de la card.</div>
+            <div>Mobile : passe en 1 colonne — card stats au-dessus, image sous le texte.</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- PATTERN C -->
+      <div class="panel" style="margin-top:20px">
+        <div class="pattern-head"><span class="pn">C</span><h4>Split : accordéon numéroté + collage</h4></div>
+        <p style="font-size:14.5px;color:var(--ink-2)">À gauche, un <b>accordéon vertical</b> : étapes repliées empilées, une seule dépliée avec un <b>gros chiffre</b>. À droite, un <b>collage d'images superposées</b> (décalées, se chevauchant). Idéal pour le « comment ça marche ».</p>
+
+        <div class="wire" style="margin-top:16px">
+          <div style="display:grid;grid-template-columns:1.15fr 0.85fr;gap:16px;align-items:start">
+            <div style="display:flex;flex-direction:column;gap:9px">
+              <div class="wbox" style="min-height:0;flex-direction:row;align-items:center;justify-content:space-between;padding:11px 14px"><span class="ws" style="margin:0">Étape 1 — repliée</span><span class="ws" style="margin:0;font-size:14px">+</span></div>
+              <div class="wbox" style="min-height:0;flex-direction:row;align-items:center;justify-content:space-between;padding:11px 14px"><span class="ws" style="margin:0">Étape 2 — repliée</span><span class="ws" style="margin:0;font-size:14px">+</span></div>
+              <div class="wbox tint" style="min-height:104px;justify-content:center">
+                <div style="font-size:30px;font-weight:800;color:var(--accent-border);line-height:1">3</div>
+                <div class="wl" style="margin-top:7px">Étape ouverte — titre</div>
+                <div class="ws">Description détaillée de l'étape active</div>
+              </div>
+              <div class="wbox" style="min-height:0;flex-direction:row;align-items:center;justify-content:space-between;padding:11px 14px"><span class="ws" style="margin:0">Étape 4 — repliée</span><span class="ws" style="margin:0;font-size:14px">+</span></div>
+            </div>
+            <div style="position:relative;min-height:210px">
+              <div class="wbox img" style="position:absolute;top:0;left:16px;right:0;height:74px"></div>
+              <div class="wbox img" style="position:absolute;top:60px;left:0;right:18px;height:84px"></div>
+              <div class="wbox img" style="position:absolute;top:128px;left:24px;right:4px;height:80px"><span class="wl" style="align-self:flex-end;margin-top:auto">Collage superposé</span></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="spec-box">
+          <b class="st">Specs de grille</b>
+          <div class="sr">
+            <div>Grille : <code>grid-template-columns: 1.15fr 0.85fr</code>, <code>gap: 24px</code>, <code>align-items: start</code>.</div>
+            <div>Accordéon (gauche) : items empilés, <code>gap: 10px</code>. Replié = ligne fine (titre + « + »), rayon <code>--r-md</code>. Actif = card <code>--accent-tint</code> avec gros chiffre <code>--accent-tint-strong</code> (48px) + titre + texte.</div>
+            <div>Collage (droite) : 3 images en <code>position:absolute</code>, décalées, chevauchement ~15px, rayons <code>--r-lg</code>, tailles variables.</div>
+            <div>Numérotation <code>01 / 02 / 03</code> justifiée ici (vraie séquence d'étapes).</div>
+            <div>Mobile : accordéon pleine largeur ; le collage devient une seule image simple en dessous.</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- PATTERN D -->
+      <div class="panel" style="margin-top:20px">
+        <div class="pattern-head"><span class="pn">D</span><h4>Bento asymétrique</h4></div>
+        <p style="font-size:14.5px;color:var(--ink-2)">Une <b>grille bento à cellules de tailles mélangées</b> — surtout pas une grille régulière. Cards claires + cards sombres + une <b>card-image large</b> qui s'étend sur 2 colonnes.</p>
+
+        <div class="wire" style="margin-top:16px">
+          <div style="display:grid;grid-template-columns:1fr 1fr 1fr;grid-auto-rows:82px;gap:12px">
+            <div class="wbox"><span class="wl">End-to-End</span><span class="ws">card claire</span></div>
+            <div class="wbox"><span class="wl">After-Sales</span><span class="ws">card claire</span></div>
+            <div class="wbox dark"><span class="wl">No Variety</span><span class="ws">card sombre</span></div>
+            <div class="wbox img" style="grid-column:span 2"><span class="wl">Superior Quality — image</span><span class="ws">span 2 colonnes</span></div>
+            <div class="wbox dark"><span class="wl">Bespoke</span><span class="ws">card sombre</span></div>
+          </div>
+        </div>
+
+        <div class="spec-box">
+          <b class="st">Specs de grille</b>
+          <div class="sr">
+            <div>Grille : <code>grid-template-columns: repeat(3, 1fr)</code>, <code>grid-auto-rows: minmax(200px, auto)</code>, <code>gap: 24px</code>.</div>
+            <div>Rang 1 : 3 cellules égales — 2 cards claires (<code>--surface</code>) + 1 card sombre (<code>--ink-surface</code>).</div>
+            <div>Rang 2 : 1 card-image large <code>grid-column: span 2</code> + 1 card sombre.</div>
+            <div>Le mélange de tailles est le principe : ne jamais retomber sur une grille uniforme 3×.</div>
+            <div>Mobile : 1 colonne, ordre logique de lecture conservé.</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ASSEMBLAGE -->
+      <div class="sec-head" style="margin-top:56px">
+        <div class="sec-num">17.b — ASSEMBLAGE</div>
+        <h2 style="font-size:clamp(22px,3vw,30px)">Ordre des sections de la landing</h2>
+        <p>De haut en bas. Chaque bloc indique quel pattern il applique. Chaque section = un <span class="inline">&lt;section&gt;</span> sémantique.</p>
+      </div>
+
+      <div class="panel">
+        <div class="assemble"><span class="idx">—</span><div class="ac"><div class="an">Header sticky</div><div class="ad">Logo à gauche · liens ancres au centre · téléphone <code>.btn-ghost</code> + <code>.btn-primary</code> « Réserver » à droite. Transparent sur le hero, fond <code>--surface</code> + <code>--sh-sm</code> au scroll.</div></div><span class="ptag comp">Barre nav</span></div>
+
+        <div class="assemble"><span class="idx">1</span><div class="ac"><div class="an">Hero</div><div class="ad">Image plein cadre, H1 bicolore ancré bas-gauche, bloc texte + CTA bas-droite. Une seule <code>&lt;h1&gt;</code> de toute la page.</div></div><span class="ptag">Pattern A</span></div>
+
+        <div class="assemble"><span class="idx">2</span><div class="ac"><div class="an">Qui sommes-nous + preuves chiffrées</div><div class="ad">Card stats à gauche (5000+ véhicules lavés · 4.9/5 · années) + card texte avec image ronde à droite.</div></div><span class="ptag">Pattern B</span></div>
+
+        <div class="assemble"><span class="idx">3</span><div class="ac"><div class="an">Comment ça marche</div><div class="ad">Accordéon des étapes du lavage (Réservez → On lave → Repartez) à gauche + collage photos à droite.</div></div><span class="ptag">Pattern C</span></div>
+
+        <div class="assemble"><span class="idx">4</span><div class="ac"><div class="an">Nos prestations</div><div class="ad">Eyebrow + H2 bicolore, puis grille de <code>.card</code> (extérieur · intérieur · complet · détailing · sans eau · à domicile). Voir section 09.</div></div><span class="ptag comp">Grille de cards</span></div>
+
+        <div class="assemble"><span class="idx">5</span><div class="ac"><div class="an">Pourquoi nous choisir</div><div class="ad">Bento asymétrique : cards claires + sombres + card-image large (éco-responsable · rapidité · produits pros · satisfaction garantie).</div></div><span class="ptag">Pattern D</span></div>
+
+        <div class="assemble"><span class="idx">6</span><div class="ac"><div class="an">Zones desservies (SEO local)</div><div class="ad">Bandeau de <code>.badge-neutral</code> cliquables (communes/quartiers) → maillage interne vers les pages locales.</div></div><span class="ptag comp">Badges</span></div>
+
+        <div class="assemble"><span class="idx">7</span><div class="ac"><div class="an">Avis clients</div><div class="ad">Grille de cards (note ⭐ + citation + nom) avec note agrégée en en-tête → schema <code>AggregateRating</code>.</div></div><span class="ptag comp">Grille de cards</span></div>
+
+        <div class="assemble"><span class="idx">8</span><div class="ac"><div class="an">FAQ</div><div class="ad">Accordéon <code>&lt;details&gt;/&lt;summary&gt;</code> → schema <code>FAQPage</code> (rich snippets Google).</div></div><span class="ptag comp">Accordéon</span></div>
+
+        <div class="assemble"><span class="idx">9</span><div class="ac"><div class="an">CTA final + formulaire de devis</div><div class="ad">Bloc pleine largeur <code>--ink-surface</code> : accroche + réassurance à gauche, <code>.form-card</code> blanche à droite. Voir section 10.</div></div><span class="ptag comp">Split + form</span></div>
+
+        <div class="assemble"><span class="idx">—</span><div class="ac"><div class="an">Footer sombre</div><div class="ad">Fond <code>--ink-surface</code>, texte atténué. Colonnes : coordonnées (téléphone · zone · horaires) · liens · mentions légales. Rappel du numéro + bouton de contact.</div></div><span class="ptag comp">Pied de page</span></div>
+      </div>
+        </section>
+
+    <!-- 18 SEO -->
+    <section id="seo">
+      <div class="sec-head">
+        <div class="sec-num">18 — SEO & ACCESSIBILITÉ</div>
+        <h2>Règles techniques non négociables</h2>
+        <p>La page est un actif SEO. Ces règles s'appliquent au-delà du visuel et conditionnent le référencement.</p>
+      </div>
+      <div class="grid g2">
+        <div class="panel">
+          <div class="label">SEO</div>
+          <ul style="list-style:none;display:flex;flex-direction:column;gap:12px">
+            <li style="font-size:14px;color:var(--ink-2);padding-left:24px;position:relative"><span style="position:absolute;left:0;color:var(--accent);font-weight:700">›</span>HTML5 sémantique : <span class="inline">header</span>, <span class="inline">main</span>, <span class="inline">section</span>, <span class="inline">footer</span>.</li>
+            <li style="font-size:14px;color:var(--ink-2);padding-left:24px;position:relative"><span style="position:absolute;left:0;color:var(--accent);font-weight:700">›</span>Une <b>seule</b> <span class="inline">h1</span>, puis hiérarchie stricte h2 → h3 sans saut.</li>
+            <li style="font-size:14px;color:var(--ink-2);padding-left:24px;position:relative"><span style="position:absolute;left:0;color:var(--accent);font-weight:700">›</span><span class="inline">alt</span> descriptif sur chaque image (avec mots-clés naturels).</li>
+            <li style="font-size:14px;color:var(--ink-2);padding-left:24px;position:relative"><span style="position:absolute;left:0;color:var(--accent);font-weight:700">›</span>Données structurées JSON-LD : <span class="inline">LocalBusiness</span>, <span class="inline">FAQPage</span>, <span class="inline">AggregateRating</span>.</li>
+            <li style="font-size:14px;color:var(--ink-2);padding-left:24px;position:relative"><span style="position:absolute;left:0;color:var(--accent);font-weight:700">›</span>Police en <span class="inline">display=swap</span> + <span class="inline">preconnect</span> (pas de blocage du rendu).</li>
+            <li style="font-size:14px;color:var(--ink-2);padding-left:24px;position:relative"><span style="position:absolute;left:0;color:var(--accent);font-weight:700">›</span>Images lazy-load + dimensions explicites (score Core Web Vitals).</li>
+            <li style="font-size:14px;color:var(--ink-2);padding-left:24px;position:relative"><span style="position:absolute;left:0;color:var(--accent);font-weight:700">›</span><span class="inline">title</span> + <span class="inline">meta description</span> optimisés · maillage interne vers pages locales.</li>
+          </ul>
+        </div>
+        <div class="panel">
+          <div class="label">Accessibilité</div>
+          <ul style="list-style:none;display:flex;flex-direction:column;gap:12px">
+            <li style="font-size:14px;color:var(--ink-2);padding-left:24px;position:relative"><span style="position:absolute;left:0;color:var(--accent);font-weight:700">›</span>Focus clavier visible partout (<span class="inline">outline</span> accent 2px).</li>
+            <li style="font-size:14px;color:var(--ink-2);padding-left:24px;position:relative"><span style="position:absolute;left:0;color:var(--accent);font-weight:700">›</span>Contraste texte ≥ 4.5:1 (respecté par --ink / --ink-2 sur fond clair).</li>
+            <li style="font-size:14px;color:var(--ink-2);padding-left:24px;position:relative"><span style="position:absolute;left:0;color:var(--accent);font-weight:700">›</span><span class="inline">label</span> lié à chaque champ · <span class="inline">aria-label</span> sur les boutons-icônes.</li>
+            <li style="font-size:14px;color:var(--ink-2);padding-left:24px;position:relative"><span style="position:absolute;left:0;color:var(--accent);font-weight:700">›</span><span class="inline">prefers-reduced-motion</span> respecté (section 15).</li>
+            <li style="font-size:14px;color:var(--ink-2);padding-left:24px;position:relative"><span style="position:absolute;left:0;color:var(--accent);font-weight:700">›</span>Cibles tactiles ≥ 44×44px (boutons, liens de nav mobile).</li>
+            <li style="font-size:14px;color:var(--ink-2);padding-left:24px;position:relative"><span style="position:absolute;left:0;color:var(--accent);font-weight:700">›</span>Texte du bouton explicite (« Recevoir mon devis », pas « Envoyer »).</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- 19 DO / DONT -->
+    <section id="rules">
+      <div class="sec-head">
+        <div class="sec-num">19 — À FAIRE / À ÉVITER</div>
+        <h2>Le récapitulatif</h2>
+        <p>En cas de doute, cette liste tranche.</p>
+      </div>
+      <div class="dd">
+        <div class="dd-col dd-do">
+          <h4><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="width:18px;height:18px"><path d="M20 6L9 17l-5-5"/></svg>À faire</h4>
+          <ul>
+            <li>Utiliser les variables CSS partout, jamais de couleur en dur.</li>
+            <li>Beaucoup d'espace blanc entre et dans les sections.</li>
+            <li>Réserver l'indigo aux actions, mots-clés et focus.</li>
+            <li>Coins arrondis généreux et cohérents (pilule pour boutons).</li>
+            <li>Ombres douces et diffuses uniquement au survol / emphase.</li>
+            <li>Une seule action primaire visible par section.</li>
+            <li>Titres bicolores avec un seul segment coloré.</li>
+            <li>Photos réelles, cohérentes, brillantes, arrondies.</li>
+          </ul>
+        </div>
+        <div class="dd-col dd-dont">
+          <h4><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="width:18px;height:18px"><path d="M18 6L6 18M6 6l12 12"/></svg>À éviter</h4>
+          <ul>
+            <li>Ajouter une deuxième couleur vive (dégradés multicolores, etc.).</li>
+            <li>Ombres noires dures ou portées trop marquées.</li>
+            <li>Coins carrés ou rayons incohérents d'un bloc à l'autre.</li>
+            <li>Empiler les boutons primaires (dilue la conversion).</li>
+            <li>Mélanger plusieurs polices ou icônes pleines + outline.</li>
+            <li>Texte gris clair (--ink-3) pour du contenu long.</li>
+            <li>Animations qui rebondissent, clignotent ou distraient.</li>
+            <li>Valeurs d'espacement arbitraires (13px, 27px…).</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="panel" style="margin-top:40px;text-align:center;background:var(--ink-surface);border:none;padding:44px 32px">
+        <div style="font-size:22px;font-weight:800;color:#fff;letter-spacing:-.02em;margin-bottom:10px">Tout est défini. Il n'y a plus qu'à assembler.</div>
+        <p style="color:rgba(255,255,255,.6);font-size:15px;max-width:520px;margin:0 auto">Coller le bloc de tokens, importer Plus Jakarta Sans, construire chaque section du blueprint avec les composants ci-dessus. Aucune décision esthétique restante.</p>
+      </div>
+    </section>
+
+  </main>
+</div>
+
+<script>
+// Surlignage de la section active dans le sommaire
+(function(){
+  var links = Array.prototype.slice.call(document.querySelectorAll('.toc a'));
+  var map = {};
+  links.forEach(function(a){ var id=a.getAttribute('href').slice(1); map[id]=a; });
+  var obs = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if(e.isIntersecting){
+        links.forEach(function(l){ l.style.background=''; l.style.color=''; });
+        var a = map[e.target.id];
+        if(a){ a.style.background='var(--accent-tint)'; a.style.color='var(--accent)'; }
+      }
+    });
+  }, {rootMargin:'-10% 0px -80% 0px'});
+  document.querySelectorAll('section[id]').forEach(function(s){ obs.observe(s); });
+})();
+</script>
+</body>
+</html>
