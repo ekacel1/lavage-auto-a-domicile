@@ -38,7 +38,7 @@
   });
 
   /* --- 3. Apparition au scroll --- */
-  const reveals = document.querySelectorAll('.reveal');
+  const reveals = document.querySelectorAll('.reveal, .rx');
   if ('IntersectionObserver' in window && reveals.length) {
     const io = new IntersectionObserver(function (entries) {
       entries.forEach(function (entry) {
